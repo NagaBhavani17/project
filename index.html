@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e2cb16f3dd.js" crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+   body{
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height:80vh
+        
+   }
+   .container{
+    margin-left:25%;
+    
+   }
+    .panel{
+        margin: auto;
+        margin-top: 10%;
+       text-align: justify;
+       padding:2% 3%;
+       }
+    .panel input{
+        padding:3%;
+        width:23vw;
+        border: none;
+    }
+.weight-input
+{
+    width:22vw;
+}
+.height-input
+{
+    width:22vw;
+}
+.whinput{
+            padding:5%;
+            width:25vw;
+            border: none;
+            background-color: rgba(237,237,237,0.8);
+        }
+.btn {
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+   }
+
+input {
+    width: 10%;
+    padding: 5px 14px;
+    border: 2px solid #201f1d;
+    margin-bottom: 10px;
+    background-color: rgba(0,0,0,.4);
+    outline: none;
+    font-size: 14px;
+}
+form {
+    background-color: #fff;
+    padding: 20px;
+    color: #000;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.4);
+}
+@media (min-width: 768px){
+    .panel {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .panel {
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+</style>
+ <body class="container">
+       <div class="panel">
+       <h2 class="text-center"><center>BMI Calculator</center></h2>    
+       <form class="whinput">
+        <div id="weightInput">
+        <p class="weight">WEIGHT(KG)</p>
+        <input  class="weight-input" id="weight" type="number" pattern="[0-9]*" name="a"/>
+        </div>
+        <div id="heightInput">
+        <p>HEIGHT(CM)</p>
+        <input class="height-input" id="height" type="number" pattern="[0-9]*" name="b"/> 
+         </div>
+        <button type="button" class="btn" onclick="calculate()">Calculate BMI</button>
+        <div id="results" class="text-center">Your BMI is </div>
+        </form>
+        </div> 
+       </div>
+
+    <script>
+    var weight, height, measure, bmi;
+    function calculate() {
+    weight = document.getElementById("weight").value;
+    height = document.getElementById("height").value;
+    height /= 100;
+    height *= height;
+    bmi = weight/height;
+    bmi = bmi.toFixed(1);
+    if(weight=="" || height=="")
+    {
+    alert("Please enter Weight and Height")
+    }
+    if (bmi <= 18.4) 
+    {
+     measure = "Your BMI is " + bmi + " which means " + "you are Underweight😟";
+    }
+     else if (bmi >= 18.5 && bmi <= 24.9)
+    {
+        measure = "Your BMI is " + bmi + " which means " + "You are Healthy😄";
+    } 
+    else if (bmi >= 25 && bmi <= 29.9)
+
+    {
+        measure = "Your BMI is " + bmi + " which means " + "You are Overweight😅";
+    } 
+    else if (bmi >= 30) 
+    {
+        measure = "Your BMI is " + bmi + " which means " + "You are Obese😱";
+    }
+    if (weight === 0 ) 
+    {
+        document.getElementById("results").innerHTML = error;
+    } 
+    else if (height === 0)
+    {
+        document.getElementById("results").innerHTML = error;
+    }
+     else
+    {
+      document.getElementById("results").innerHTML = measure;
+    }
+    if (weight < 0)
+     {
+        document.getElementById("results").innerHTML = "Negative Values not Allowed";
+    }
+}
+</script>
+</body>
+</html>
